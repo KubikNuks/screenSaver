@@ -31,14 +31,18 @@ def take_screenshot():
 
 def nowy_prz():
     button3 = tk.Button(root, text='Take Screenshot', command=on_click)
+    button_list.append(button3)
     button3.pack()
 # Create a function to handle button clicks
 def on_click():
     take_screenshot()
 
 def remove_button():
-    button.destroy()
-
+    if len(button_list) > 1:
+        button = button_list.pop()
+        button.destroy()
+# Keep track of buttons
+button_list = []
 # Create the GUI window
 root = tk.Tk()
 root.title('Screenshot')
@@ -48,6 +52,7 @@ button = tk.Button(root, text='Take Screenshot', command=on_click)
 button.pack()
 
 add_button = tk.Button(root, text='Dodaj przycisk',command=nowy_prz)
+button_list.append(add_button)
 add_button.pack()
 
 button4 = tk.Button(root, text='Usun przycisk',command=remove_button)
